@@ -16,6 +16,23 @@ class NoDaTrie{
     }
 }
 
+class Trie{
+    private NoDaTrie raiz;
+    public Trie(){
+        setRaiz(new NoDaTrie());
+    }
+
+
+
+    public NoDaTrie getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(NoDaTrie raiz) {
+        this.raiz = raiz;
+    }
+}
+
 public class Main{
     public static void main(String[] args){
 
