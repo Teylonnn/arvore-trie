@@ -22,6 +22,23 @@ class Trie{
         setRaiz(new NoDaTrie());
     }
 
+    public void inserir(String palavra){
+        NoDaTrie noAtual = getRaiz();
+
+        for(Character letra : palavra.toCharArray()){
+            if(noAtual.getNoTabelaHash().containsKey(letra)){
+                noAtual =  noAtual.getNoTabelaHash().get(letra);
+            }
+            else{
+                NoDaTrie novoNo = new NoDaTrie();
+                noAtual.getNoTabelaHash().put(letra, novoNo);
+                noAtual = novoNo;
+            }
+        }
+
+        noAtual.getNoTabelaHash().put('*', null);
+    }
+
     public NoDaTrie busca(String palavra){
         NoDaTrie noAtual = getRaiz();
 
