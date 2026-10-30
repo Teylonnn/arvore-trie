@@ -22,7 +22,20 @@ class Trie{
         setRaiz(new NoDaTrie());
     }
 
+    public NoDaTrie busca(String palavra){
+        NoDaTrie noAtual = getRaiz();
 
+        for(Character letra : palavra.toCharArray()){
+            if(noAtual.getNoTabelaHash().containsKey(letra)){
+                noAtual = noAtual.getNoTabelaHash().get(letra);
+            }
+            else{
+                return null;
+            }
+        }
+
+        return noAtual;
+    }
 
     public NoDaTrie getRaiz() {
         return raiz;
