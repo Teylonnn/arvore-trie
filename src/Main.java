@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 class NoDaTrie{
@@ -37,6 +39,33 @@ class Trie{
         }
 
         noAtual.getNoTabelaHash().put('*', null);
+    }
+
+    public List<String> coletarTodasAsPalavrasDaTrie(NoDaTrie no, String palavra, List<String> palavras){
+        NoDaTrie noAtual;
+
+        if(no == null){
+            noAtual = getRaiz();
+        }
+        else{
+            noAtual = no;
+        }
+
+        for(Map.Entry <Character, NoDaTrie> entry : noAtual.getNoTabelaHash().entrySet()){
+            if(entry.getKey().equals('*')){
+                noAtual = noAtual.getNoTabelaHash().get(entry.getKey());
+            }
+            else{
+                coletarTodasAsPalavrasDaTrie(entry.getValue(), palavra.concat(entry.getKey().toString()), palavras);
+            }
+        }
+
+        return palavras;
+
+    }
+
+    public List<String> coletarTodasAsPalavrasDaTrie(NoDaTrie no){
+        return coletarTodasAsPalavrasDaTrie(no, "", new ArrayList<>());
     }
 
     public NoDaTrie busca(String palavra){
