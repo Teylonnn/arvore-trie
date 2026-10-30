@@ -53,7 +53,7 @@ class Trie{
 
         for(Map.Entry <Character, NoDaTrie> entry : noAtual.getNoTabelaHash().entrySet()){
             if(entry.getKey().equals('*')){
-                noAtual = noAtual.getNoTabelaHash().get(entry.getKey());
+                palavras.add(palavra);
             }
             else{
                 coletarTodasAsPalavrasDaTrie(entry.getValue(), palavra.concat(entry.getKey().toString()), palavras);
